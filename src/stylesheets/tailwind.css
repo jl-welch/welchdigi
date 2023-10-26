@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+  --color-primary: #9333ea;
+}
+
+body {
+  min-height: 100vh;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  background-color: #fff;
+}
