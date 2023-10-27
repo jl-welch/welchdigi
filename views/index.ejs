@@ -237,16 +237,16 @@
                   src="/images/s_ss2.png"
                   class="h-68 md:h-48 lg:h-64 w-full rounded-t pb-6 object-cover object-top"
                   loading="lazy"
-                  alt="Screenshot of Welch's Building Services website"
+                  alt="Screenshot of Welch"s Building Services website"
                 />
                 <p class="w-full text-gray-600 text-xs md:text-sm px-6 py-4">
                   Web Design &amp; Development
                 </p>
                 <div class="w-full font-bold text-xl text-gray-800 px-6">
-                  Welch's Building Services
+                  Welch"s Building Services
                 </div>
                 <p class="text-gray-800 text-base px-6 mb-5">
-                  A website for a tradesman. We designed and developed a new website for Welch's Building Services.
+                  A website for a tradesman. We designed and developed a new website for Welch"s Building Services.
                 </p>
               </a>
             </div>
@@ -322,7 +322,7 @@
       <div class="w-full mx-auto max-w-4xl">
         <form
           class="max-w-[calc(90%)] mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          action="#"
+          action="/contact"
           method="POST"
         >
           <div class="mb-4">
@@ -369,7 +369,7 @@
           <div class="flex items-center justify-between">
             <button
               class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
             >
               Send Message
             </button>
@@ -395,5 +395,53 @@
         </div>
       </div>
     </footer>
+
+    <div id="loader" class="hidden fixed top-0 left-0 h-full w-full bg-black/50">
+      <div class="flex items-center justify-center h-full">
+        <div class="flex flex-col items-center">
+          <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-600"></div>
+          <div class="text-xl text-white mt-4">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="notification" class="hidden fixed bottom-10 right-10 p-6 rounded-sm border border-gray-100 bg-gray-50 text-black">
+      <div class="flex items-center justify-center">
+        <div class="flex flex-col items-center">
+          <div class="text-2xl font-bold">👋</div>
+          <div class="text-sm">We"ve received your message. We"ll be in touch soon.</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const loader = document.querySelector("#loader");
+      const notification = document.querySelector("#notification");
+      // contact post submit ajax
+      const contactForm = document.querySelector("form");
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.querySelector("#name").value;
+        const email = document.querySelector("#email").value;
+        const message = document.querySelector("#message").value;
+        loader.classList.remove("hidden");
+        const response = await fetch("/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          contactForm.reset();
+          loader.classList.add("hidden");
+          notification.classList.remove("hidden");
+          setTimeout(() => {
+            notification.classList.add("hidden");
+          }, 5000);
+        }
+      });
+    </script>
   </body>
 </html>
