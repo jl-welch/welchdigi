@@ -709,6 +709,26 @@ video {
   max-width: calc(90%);
 }
 
+.max-w-6xl {
+  max-width: 72rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1052,6 +1072,10 @@ video {
     display: none;
   }
 
+  .md\:h-48 {
+    height: 12rem;
+  }
+
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1068,6 +1092,10 @@ video {
     gap: 1.5rem;
   }
 
+  .md\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .md\:py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -1082,6 +1110,10 @@ video {
 @media (min-width: 1024px) {
   .lg\:mb-8 {
     margin-bottom: 2rem;
+  }
+
+  .lg\:h-64 {
+    height: 16rem;
   }
 
   .lg\:grid-cols-3 {
