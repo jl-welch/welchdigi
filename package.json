@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "tailwind": "npx tailwindcss -c ./tailwind.config.js -i ./src/stylesheets/tailwind.css -o ./public/stylesheets/style.css --watch"
+    "tailwind": "npx tailwindcss -c ./tailwind.config.js -i ./src/stylesheets/tailwind.css -o ./public/stylesheets/style.css --minify --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
